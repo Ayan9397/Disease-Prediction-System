@@ -1,0 +1,217 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-color: #00d1ff; /* Futuristic Cyan */
+    --secondary-color: #6c757d;
+    --dark-text: #f0f8ff; /* Alice Blue - soft white for dark bg */
+    --light-text: #ffffff;
+    --border-color: rgba(255, 255, 255, 0.2);
+    --font-family: 'Poppins', sans-serif;
+    --box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --border-radius: 20px;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: #000428;
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+/* --- Animated Background Styling --- */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: #000428;
+    background: -webkit-linear-gradient(to right, #004e92, #000428);
+    background: linear-gradient(to right, #004e92, #000428);
+}
+
+/* --- "Glassmorphism" Content Card --- */
+.content-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    padding: 2.5rem;
+    box-shadow: var(--box-shadow);
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Layout & Parent Template --- */
+.navbar, .site-footer {
+    background: rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(20px);
+}
+
+.nav-link, .navbar-brand {
+    color: var(--light-text) !important;
+    text-shadow: 0 0 5px rgba(0, 209, 255, 0.5);
+}
+
+/* --- Homepage (home.html) Specific Styles --- */
+.hero-section {
+    padding: 3rem 0;
+}
+
+.how-it-works {
+    padding: 3rem 0;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+.section-title {
+    margin-bottom: 2.5rem;
+    font-weight: 600;
+}
+
+.step-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.step-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-10px);
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: #000428;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+
+/* --- Symptom Checker Page Styles --- */
+.checker-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.result-box {
+    background-color: rgba(0, 209, 255, 0.15);
+    border-left: 5px solid var(--primary-color);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    animation: fadeInResult 0.6s ease-out;
+}
+
+.result-box h2 {
+    color: var(--light-text);
+    font-weight: 700;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 0;
+    text-shadow: 0 0 5px rgba(0, 209, 255, 0.8), 0 0 15px rgba(0, 209, 255, 0.5);
+}
+
+@keyframes fadeInResult {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.symptom-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 992px) {
+    .symptom-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+
+.symptom-card {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.symptom-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.symptom-card.checked {
+    background: rgba(0, 209, 255, 0.2);
+    border-color: var(--primary-color);
+}
+
+.symptom-card input[type="checkbox"] { display: none; }
+.symptom-card .card-content { font-weight: 500; }
+.symptom-card input[type="checkbox"]:checked + .card-content { color: var(--primary-color); font-weight: 600; }
+
+.submit-btn {
+    background: linear-gradient(45deg, var(--primary-color), #007bff);
+    border: none;
+    transition: all 0.3s ease;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0, 209, 255, 0.3);
+}
+
+.submit-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 209, 255, 0.5);
+}
+
+/* --- History Page Styles --- */
+.history-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.history-table {
+    background: transparent;
+    border-collapse: collapse;
+}
+
+.history-table thead th {
+    background-color: rgba(0, 209, 255, 0.2);
+    color: var(--primary-color);
+}
+
+.history-table td, .history-table th {
+    padding: 1rem;
+    text-align: left;
+    border: 1px solid var(--border-color);
+}
+
+.history-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}

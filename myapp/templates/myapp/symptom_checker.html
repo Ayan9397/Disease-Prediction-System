@@ -1,0 +1,33 @@
+{% extends "myapp/parent.html" %}
+
+{% block main %}
+<div class="container content-card">
+    <div class="checker-wrapper">
+        {% if res %}
+        <div class="result-box">
+            <h2>Predicted Disease: {{ res }}</h2>
+        </div>
+        {% endif %}
+
+        <div class="text-center mb-4">
+            <h1 class="display-6">Symptom Checker</h1>
+            <p class="lead">Select the symptoms you are experiencing below.</p>
+        </div>
+
+        <form action="{% url 'symptom_checker' %}" method="post">
+            {% csrf_token %}
+            <div class="symptom-grid">
+                {% for symptom in symptoms %}
+                <label class="symptom-card {% if symptom.checked %}checked{% endif %}">
+                    <input type="checkbox" name="{{ symptom.name }}" {% if symptom.checked %}checked{% endif %}>
+                    <span class="card-content">{{ symptom.name|title|cut:"_" }}</span>
+                </label>
+                {% endfor %}
+            </div>
+            <div class="d-grid">
+                <button type="submit" class="btn btn-primary submit-btn">Predict Disease</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock main %}

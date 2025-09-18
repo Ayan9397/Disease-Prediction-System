@@ -1,0 +1,54 @@
+{% extends "myapp/parent.html" %}
+{% block main %}
+
+  <div class.history-wrapper">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1 class="display-6 m-0">Medical History</h1>
+      
+      <form action="{% url 'clear_history' %}" method="post" onsubmit="return confirm('Are you sure you want to permanently delete all records?');">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Clear All History</button>
+      </form>
+    </div>
+
+    <div class="table-responsive">
+      <table class="history-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Fever</th>
+            <th>Headache</th>
+            <th>Nausea</th>
+            <th>Vomiting</th>
+            <th>Fatigue</th>
+            <th>Joint Pain</th>
+            <th>Skin Rash</th>
+            <th>Cough</th>
+            <th>Weight Loss</th>
+            <th>Yellow Eyes</th>
+            <th>Disease</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for h in his %}
+            <tr>
+              <td>{{ h.id }}</td>
+              <td>{% if h.fever == '1' %}Yes{% else %}No{% endif %}</td>
+              <td>{% if h.headache == '1' %}Yes{% else %}No{% endif %}</td>
+              <td>{% if h.nausea == '1' %}Yes{% else %}No{% endif %}</td>
+              <td>{% if h.vomiting == '1' %}Yes{% else %}No{% endif %}</td>
+              <td>{% if h.fatigue == '1' %}Yes{% else %}No{% endif %}</td>
+              <td>{% if h.joint_pain == '1' %}Yes{% else %}No{% endif %}</td>
+              <td>{% if h.skin_rash == '1' %}Yes{% else %}No{% endif %}</td>
+              <td>{% if h.cough == '1' %}Yes{% else %}No{% endif %}</td>
+              <td>{% if h.weight_loss == '1' %}Yes{% else %}No{% endif %}</td>
+              <td>{% if h.yellow_eyes == '1' %}Yes{% else %}No{% endif %}</td>
+              <td>{{ h.res }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+{% endblock main %}

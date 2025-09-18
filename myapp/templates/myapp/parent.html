@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Disease Prediction System</title>
+    
+    <link rel="icon" href="https://api.iconify.design/fluent-emoji-flat:dna.svg" type="image/svg+xml">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+
+    <div id="particles-js"></div>
+  
+    <header class="site-header sticky-top">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand fw-bold d-flex align-items-center" href="{% url 'home' %}">
+            <img src="https://api.iconify.design/fluent-emoji-flat:dna.svg" alt="Logo" width="32" height="32" class="me-2">
+            Disease Prediction System
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Tools
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'symptom_checker' %}">Symptom Checker</a></li>
+                  <li><a class="dropdown-item" href="{% url 'history' %}">Medical History</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="content-wrap">
+      {% block main %}{% endblock main %}
+    </main>
+
+    <footer class="site-footer mt-auto py-5 text-light">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+                  <h5>Disease Prediction System</h5>
+                  <p class="text-white-50">Leveraging AI to provide health insights from your symptoms.</p>
+                  <div>
+                      <a href="#" class="text-white-50 me-3 text-decoration-none" title="GitHub"><img src="https://api.iconify.design/bi:github.svg?color=white" alt="GitHub" width="24"></a>
+                      <a href="#" class="text-white-50 me-3 text-decoration-none" title="LinkedIn"><img src="https://api.iconify.design/bi:linkedin.svg?color=white" alt="LinkedIn" width="24"></a>
+                      <a href="#" class="text-white-50 me-3 text-decoration-none" title="Instagram"><img src="https://api.iconify.design/bi:instagram.svg?color=white" alt="Instagram" width="24"></a>
+                      <a href="#" class="text-white-50 text-decoration-none" title="Facebook"><img src="https://api.iconify.design/bi:facebook.svg?color=white" alt="Facebook" width="24"></a>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                  <h5>Quick Links</h5>
+                  <ul class="list-unstyled">
+                      <li><a href="{% url 'symptom_checker' %}" class="text-decoration-none text-white-50">Checker</a></li>
+                      <li><a href="{% url 'history' %}" class="text-decoration-none text-white-50">History</a></li>
+                  </ul>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                  <h5>Contact</h5>
+                  <p class="text-white-50 mb-1">Mohd Ayan</p>
+                  <p class="text-white-50 mb-1">Laharpur, Uttar Pradesh, India</p>
+              </div>
+              <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                  <h5>Powered By</h5>
+                  <p class="text-white-50 mb-1">Django & Scikit-learn</p>
+              </div>
+          </div>
+          <div class="border-top border-secondary mt-4 pt-4">
+              <div class="text-center mb-3">
+                  <h6 class="text-warning">⚠️ Important Disclaimer</h6>
+                  <p class="text-white-50 fst-italic" style="font-size: 0.9rem;">
+                      This tool is for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician.
+                  </p>
+              </div>
+              <div class="text-center">
+                  <p class="mb-0 text-white-50">&copy; {% now "Y" %} Disease Prediction System. All rights reserved.</p>
+              </div>
+          </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+      particlesJS("particles-js", {"particles":{"number":{"value":80,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle"},"opacity":{"value":0.5,"random":false},"size":{"value":3,"random":true},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":6,"direction":"none","out_mode":"out"}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"}}},"retina_detect":true});
+    </script>
+  </body>
+</html>
